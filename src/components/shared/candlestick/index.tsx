@@ -1,16 +1,7 @@
-import React, { useState } from 'react';
-import {
-  Chart as ChartJS,
-  TimeScale,
-  LinearScale,
-  Tooltip,
-  ChartOptions, Colors,
-} from 'chart.js';
-import { Chart } from 'react-chartjs-2';
-import {
-  CandlestickController,
-  CandlestickElement,
-} from 'chartjs-chart-financial';
+import React from 'react';
+import {Chart as ChartJS, ChartOptions, Colors, LinearScale, TimeScale, Tooltip,} from 'chart.js';
+import {Chart} from 'react-chartjs-2';
+import {CandlestickController, CandlestickElement,} from 'chartjs-chart-financial';
 import 'chartjs-adapter-date-fns';
 import colors from '@/theme/tokens/colors';
 import {CoinHistoryItem} from "@/types";
@@ -74,7 +65,7 @@ const options: ChartOptions<'candlestick'> = {
   },
 };
 
-const CandlestickChart = ({chartData}: any) => {
+const CandlestickChart = ({chartData}: { chartData: CoinHistoryItem[] }) => {
 
   const data = {
     datasets: [
@@ -96,7 +87,7 @@ const CandlestickChart = ({chartData}: any) => {
 
   return (
     <div>
-      <Chart type="candlestick" data={data} options={options} />
+      <Chart type="candlestick" data={data} options={options}/>
     </div>
   );
 };
