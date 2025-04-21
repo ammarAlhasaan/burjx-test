@@ -1,0 +1,23 @@
+.tabs {
+  display: flex;
+}
+
+.tab {
+  font-size: var(--text-xl);
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+  transition: all 0.3s ease;
+  @media screen and (max-width: 768px) {
+    padding: 12px;
+    font-size: var(--text-md);
+  }
+}
+
+.tab.active {
+  color: var(--text-default);
+  border-bottom: 1px solid var(--border-primary);
+}

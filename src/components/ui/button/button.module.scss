@@ -1,0 +1,172 @@
+$button-sizes: (
+        sm: (padding: var(--button-sm-padding), font-size: var(--button-sm-font-size), gap: var(--button-sm-gap), height: var(--button-sm-height)),
+        md: (padding: var(--button-md-padding), font-size: var(--button-md-font-size), gap: var(--button-md-gap), height: var(--button-md-height)),
+        lg: (padding: var(--button-lg-padding), font-size: var(--button-lg-font-size), gap: var(--button-lg-gap), height: var(--button-lg-height)),
+);
+
+@mixin button-size($size) {
+  $size-settings: map-get($button-sizes, $size);
+
+  @if $size-settings {
+    padding: map-get($size-settings, padding);
+    font-size: map-get($size-settings, font-size);
+    gap: map-get($size-settings, gap);
+    height: map-get($size-settings, height);
+  } @else {
+    @error "Invalid size: #{$size}. Available sizes: sm, md, lg.";
+  }
+}
+
+// Mixin for common button base styles
+@mixin button-base {
+  padding: var(--xs) var(--sm);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--button-md-font-size);
+  font-family: var(--font-family);
+  transition: background-color 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: var(--sm);
+
+  [class^="i-"] {
+    font-size: 1.5rem;
+  }
+}
+
+// Mixin for button states (hover, focus, active, loading, disabled)
+@mixin button-states($status) {
+  &:hover {
+    background-color: var(--background-#{$status}-hovered);
+  }
+
+  &:focus {
+    background-color: var(--background-#{$status}-focused);
+    outline: 2px solid var(--background-#{$status}-focused);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: var(--background-#{$status}-pressed);
+  }
+
+  &[data-loading='true'] {
+    background-color: var(--background-#{$status}-loading);
+    cursor: wait;
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    background-color: var(--background-disabled);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  [data-spinner='true'] div {
+    background-color: var(--text-base, #000);
+  }
+}
+
+// Shared helper mixin for borders
+@mixin button-border($status, $border-style: solid) {
+  @if $status == invert {
+    border: 1px #{$border-style} var(--border-default);
+  } @else {
+    border: 1px #{$border-style} var(--border-#{$status});
+  }
+}
+
+
+.button {
+  @include button-base;
+
+  &.radius {
+    border-radius: 40px !important;
+  }
+
+  // Support different sizes
+  &.sm {
+    @include button-size(sm);
+  }
+
+  &.md {
+    @include button-size(md); // Default size
+  }
+
+  &.lg {
+    @include button-size(lg);
+  }
+  // Define the list of statuses
+  $statuses: default, info, primary, warning, error, success;
+
+  // Filled button styles
+  &.filled {
+    @each $status in $statuses {
+      &.#{$status} {
+        background-color: var(--background-#{$status}-default);
+        @if $status == default {
+          color: var(--text-default);
+        } @else {
+          color: var(--text-base);
+        }
+
+        @include button-states($status);
+      }
+    }
+  }
+
+  // Outline button styles
+  &.outline {
+    @each $status in $statuses {
+      &.#{$status} {
+        background-color: transparent;
+        color: var(--text-#{$status});
+        @include button-border($status);
+        @include button-states($status);
+
+        &:hover {
+          background-color: var(--background-base-hovered);
+        }
+
+        &:focus {
+          background-color: var(--background-base-pressed);
+          outline: 2px solid var(--border-#{$status});
+          outline-offset: 2px;
+        }
+
+        &:active {
+          background-color: var(--background-base-pressed);
+        }
+
+      }
+    }
+  }
+  // Text button styles
+  &.text {
+    @each $status in $statuses {
+      &.#{$status} {
+        @include button-states($status);
+
+        background-color: transparent;
+        color: var(--text-#{$status});
+        border: none;
+
+        &:hover {
+          background-color: var(--background-base-hovered);
+        }
+
+        &:focus {
+          outline: 2px solid var(--text-#{$status});
+          outline-offset: 2px;
+          background-color: var(--background-base-pressed);
+        }
+
+        &:active {
+          color: var(--text-#{$status});
+          background-color: var(--background-base-pressed);
+        }
+      }
+    }
+  }
+}

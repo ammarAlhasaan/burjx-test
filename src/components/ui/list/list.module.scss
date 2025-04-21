@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 500px;
+}
+
+
+.header,
+.row {
+  display: flex;
+}
+
+.header {
+  font-weight: 300;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+
+.cell {
+  flex: 1;
+  padding: 4px 8px;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+}

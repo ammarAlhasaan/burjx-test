@@ -1,0 +1,14 @@
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  gap: .5rem;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

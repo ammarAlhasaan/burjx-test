@@ -1,0 +1,197 @@
+@import "bootstrap-grid.min.css";
+
+
+body {
+  background: var(--background-base-default);
+  font-family: var(--font-family);
+  color: var(--text-default);
+  font-weight: 400;
+}
+
+.default {
+  --bg-color: var(--background-default-default);
+  --border-color: var(--border-default);
+  --text-color: var(--text-default);
+
+  /* Hover, Focus, Loading, Pressed states */
+  --bg-color-hovered: var(--background-default-hovered);
+  --bg-color-focused: var(--background-default-focused);
+  --bg-color-loading: var(--background-default-loading);
+  --bg-color-pressed: var(--background-default-pressed);
+
+  /* Inverted states */
+  --text-color-invert: var(--text-invert-default);
+  --bg-color-invert: var(--background-default-invert-default);
+  --bg-color-invert-hovered: var(--background-default-invert-hovered);
+  --bg-color-invert-focused: var(--background-default-invert-focused);
+  --bg-color-invert-loading: var(--background-default-invert-loading);
+  --bg-color-invert-pressed: var(--background-default-invert-pressed);
+}
+
+.primary {
+  --bg-color: var(--background-primary-default);
+  --border-color: var(--border-primary);
+  --text-color: var(--text-primary);
+
+  /* Hover, Focus, Loading, Pressed states */
+  --bg-color-hovered: var(--background-primary-hovered);
+  --bg-color-focused: var(--background-primary-focused);
+  --bg-color-loading: var(--background-primary-loading);
+  --bg-color-pressed: var(--background-primary-pressed);
+
+  /* Inverted states */
+  --text-color-invert: var(--text-invert-primary);
+  --bg-color-invert: var(--background-primary-invert-default);
+  --bg-color-invert-hovered: var(--background-primary-invert-hovered);
+  --bg-color-invert-focused: var(--background-primary-invert-focused);
+  --bg-color-invert-loading: var(--background-primary-invert-loading);
+  --bg-color-invert-pressed: var(--background-primary-invert-pressed);
+}
+
+.success {
+  --bg-color: var(--background-success-default);
+  --border-color: var(--border-success);
+  --text-color: var(--text-success);
+
+  /* Hover, Focus, Loading, Pressed states */
+  --bg-color-hovered: var(--background-success-hovered);
+  --bg-color-focused: var(--background-success-focused);
+  --bg-color-loading: var(--background-success-loading);
+  --bg-color-pressed: var(--background-success-pressed);
+
+  /* Inverted states */
+  --text-color-invert: var(--text-invert-success);
+  --bg-color-invert: var(--background-success-invert-default);
+  --bg-color-invert-hovered: var(--background-success-invert-hovered);
+  --bg-color-invert-focused: var(--background-success-invert-focused);
+  --bg-color-invert-loading: var(--background-success-invert-loading);
+  --bg-color-invert-pressed: var(--background-success-invert-pressed);
+}
+
+
+.info {
+  --bg-color: var(--background-info-default);
+  --border-color: var(--border-info);
+  --text-color: var(--text-info);
+
+  /* Hover, Focus, Loading, Pressed states */
+  --bg-color-hovered: var(--background-info-hovered);
+  --bg-color-focused: var(--background-info-focused);
+  --bg-color-loading: var(--background-info-loading);
+  --bg-color-pressed: var(--background-info-pressed);
+
+  /* Inverted states */
+  --text-color-invert: var(--text-invert-info);
+  --bg-color-invert: var(--background-info-invert-default);
+  --bg-color-invert-hovered: var(--background-info-invert-hovered);
+  --bg-color-invert-focused: var(--background-info-invert-focused);
+  --bg-color-invert-loading: var(--background-info-invert-loading);
+  --bg-color-invert-pressed: var(--background-info-invert-pressed);
+}
+
+
+.error {
+  --bg-color: var(--background-error-default);
+  --border-color: var(--border-error);
+  --text-color: var(--text-error);
+
+  /* Hover, Focus, Loading, Pressed states */
+  --bg-color-hovered: var(--background-error-hovered);
+  --bg-color-focused: var(--background-error-focused);
+  --bg-color-loading: var(--background-error-loading);
+  --bg-color-pressed: var(--background-error-pressed);
+
+  /* Inverted states */
+  --text-color-invert: var(--text-invert-error);
+  --bg-color-invert: var(--background-error-invert-default);
+  --bg-color-invert-hovered: var(--background-error-invert-hovered);
+  --bg-color-invert-focused: var(--background-error-invert-focused);
+  --bg-color-invert-loading: var(--background-error-invert-loading);
+  --bg-color-invert-pressed: var(--background-error-invert-pressed);
+}
+
+.warning {
+  --bg-color: var(--background-warning-default);
+  --border-color: var(--border-warning);
+  --text-color: var(--text-warning);
+
+  /* Hover, Focus, Loading, Pressed states */
+  --bg-color-hovered: var(--background-warning-hovered);
+  --bg-color-focused: var(--background-warning-focused);
+  --bg-color-loading: var(--background-warning-loading);
+  --bg-color-pressed: var(--background-warning-pressed);
+
+  /* Inverted states */
+  --text-color-invert: var(--text-invert-warning);
+  --bg-color-invert: var(--background-warning-invert-default);
+  --bg-color-invert-hovered: var(--background-warning-invert-hovered);
+  --bg-color-invert-focused: var(--background-warning-invert-focused);
+  --bg-color-invert-loading: var(--background-warning-invert-loading);
+  --bg-color-invert-pressed: var(--background-warning-invert-pressed);
+}
+
+
+.disabled {
+  --bg-color: var(--background-disabled);
+  --border-color: var(--border-disabled);
+  --text-color: var(--text-disabled);
+
+  /* Invert fallback */
+  --text-color-invert: var(--text-invert-default);
+  --bg-color-invert: var(--background-disabled); /* No inverted version, fallback to disabled background */
+}
+
+$text-sizes: -xs, -sm, -md, -lg, -xl, 2-xl, 3-xl, 4-xl, 5-xl, 6-xl, 7-xl, 8-xl, 9-xl;
+
+@each $size in $text-sizes {
+  .text#{$size} {
+    font-size: var(--text#{$size});
+  }
+
+  .leading-#{$size} {
+    line-height: var(--line-height#{$size});
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+// Headings
+h1 {
+  font-size: var(--text6-xl);
+  line-height: var(--line-height6-xl);
+}
+
+h2 {
+  font-size: var(--text5-xl);
+  line-height: var(--line-height5-xl);
+}
+
+h3 {
+  font-size: var(--text4-xl);
+  line-height: var(--line-height4-xl);
+}
+
+h4 {
+  font-size: var(--text3-xl);
+  line-height: var(--line-height3-xl);
+}
+
+h5 {
+  font-size: var(--text2-xl);
+  line-height: var(--line-height2-xl);
+}
+
+h6 {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}

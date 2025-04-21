@@ -1,0 +1,20 @@
+.group {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: var(--text-secondary)
+}
+
+.active {
+  background: var(--background-primary-default);
+  color: var(--text-base);
+}

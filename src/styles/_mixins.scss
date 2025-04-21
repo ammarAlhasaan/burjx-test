@@ -1,0 +1,87 @@
+// Mixin to apply the alert's size-specific styles
+@mixin apply-size($size, $component-sizes) {
+  $size-settings: map-get($component-sizes, $size);
+
+  padding: map-get($size-settings, padding);
+  margin: map-get($size-settings, margin);
+  font-size: map-get($size-settings, font-size);
+  gap: map-get($size-settings, gap);
+  max-width: map-get($size-settings, max-width);
+
+
+  .content {
+    padding: map-get($size-settings, content-padding);
+  }
+
+  // Header and content-specific size-related styles
+  .header {
+    padding: map-get($size-settings, header-padding);
+    font-weight: 500;
+  }
+
+  .footer {
+    padding: map-get($size-settings, footer-padding);
+  }
+
+  .body {
+    padding: map-get($size-settings, body-padding);
+  }
+
+}
+
+// Mixin to apply the alert's kind-specific styles
+@mixin apply-kind($kind, $component-kinds, $invert-settings: null) {
+  $kind-settings: map-get($component-kinds, $kind);
+
+  // Apply base kind styles
+  background: map-get($kind-settings, background);
+  border: map-get($kind-settings, border);
+  color: map-get($kind-settings, color);
+
+  // Apply invert modifier if $invert-settings is provided
+  @if $invert-settings != null {
+    @if $kind == filled {
+      background: map-get($invert-settings, background);
+    }
+    color: map-get($invert-settings, color);
+    border-color: map-get($invert-settings, border-color);
+  }
+}
+
+@mixin apply-interaction-states($prefix: 'bg-color') {
+
+  &:hover {
+    background-color: var(--#{$prefix}-hovered);
+  }
+
+  &:focus {
+    background-color: var(--#{$prefix}-focused);
+  }
+
+  &:active {
+    background-color: var(--#{$prefix}-pressed);
+  }
+}
+
+
+@function generate-component-sizes($component-name, $props) {
+  $sizes: (
+          sm: (),
+          md: (),
+          lg: (),
+          xl: ()
+  );
+
+  @each $size, $settings in $sizes {
+    $new-settings: ();
+
+    @each $prop in $props {
+      $prop-var: var(--#{$component-name}-#{$size}-#{$prop});
+      $new-settings: map-merge($new-settings, ($prop: $prop-var));
+    }
+
+    $sizes: map-merge($sizes, ($size: $new-settings));
+  }
+
+  @return $sizes;
+}

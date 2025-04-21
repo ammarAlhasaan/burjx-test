@@ -1,0 +1,59 @@
+@import "@/styles/_mixins.scss";
+
+$badge-sizes: generate-component-sizes(badge, ('content-padding', 'font-size', 'size'));
+$badge-kinds: (
+        filled: (
+                background: var(--background-badge),
+                color: var(--text-color),
+                border: none
+        )
+);
+
+
+.badge {
+  font-family: var(--font-family);
+  border-radius: 8px;
+  display: inline-flex;
+  align-self: flex-start;
+
+  .content {
+    display: inline-flex;
+    gap: var(--2xs);
+  }
+
+  // Apply different kinds (filled, outline)
+  &.filled, &.outline {
+    @each $kind, $settings in $badge-kinds {
+      &.#{$kind} {
+        @include apply-kind($kind, $badge-kinds);
+        // Default color styling
+        &.default {
+          color: var(--text-default);
+        }
+      }
+    }
+  }
+
+
+  &.filled {
+    .icon {
+      color: var(--text-color-invert);
+    }
+
+    // Default color styling
+    &.default .icon {
+      color: var(--text-default);
+    }
+  }
+
+  // Apply different sizes (sm, md, lg, xl)
+  @each $size, $settings in $badge-sizes {
+    &.#{$size} {
+      @include apply-size($size, $badge-sizes);
+
+      // Use the 'size' value from the map
+      min-height: map-get($settings, size); // Apply size for height
+      min-width: map-get($settings, size); // Apply size for width to make the badge square
+    }
+  }
+}

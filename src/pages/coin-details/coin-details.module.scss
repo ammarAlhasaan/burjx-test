@@ -1,0 +1,22 @@
+.coinDetails {
+  margin-top: 2rem;
+}
+
+.coinItem {
+  cursor: pointer;
+}
+
+.selectButton {
+  max-width: 270px;
+  cursor: pointer;
+
+  .selectCoin {
+    height: 64px;
+
+    .coinAvatar img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+
+.coinCard {
+  min-width: 230px;
+  background-color: #2B2B2B4D;
+  .coinAvatar {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .coinInfo {
+    h4, p {
+      margin: 0;
+    }
+  }
+}
